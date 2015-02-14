@@ -6,9 +6,15 @@ Code Day
 Developers...
 
 Atilla Saadat
+
 Abhi Gupta
+
 Samira Bulle
+
 Naomee Rahman
+
 Johnny Nguyen
+
 Sam Wang
+
 Yasim Avci
