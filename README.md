@@ -1,20 +1,13 @@
 # Spique
-Sign Language with Leap Motion
+Our program focuses on using LeapMotion to teach Sign Language to people around the world. We wanted to make something useful for the world.
 
-Code Day
+What's it for?: CodeDay!
 
-Developers...
-
-Atilla Saadat
-
-Abhi Gupta
-
-Samira Bulle
-
-Naomee Rahman
-
-Johnny Nguyen
-
-Sam Wang
-
-Yasin Avci
+The Developers:
+- Atilla Saadat
+- Abhi Gupta
+- Samira Bulle
+- Naomee Rahman
+- Johnny Nguyen
+- Sam Wang
+- Yasin Avci
