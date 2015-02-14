@@ -3,4 +3,12 @@ Sign Language with Leap Motion
 
 Code Day
 
-Hello it's Sam
+Developers...
+
+Atilla Saadat
+Abhi Gupta
+Samira Bulle
+Naomee Rahman
+Johnny Nguyen
+Sam Wang
+Yasim Avci
