@@ -4,9 +4,9 @@ public class Finger{
 
 //-------------------------------------------------------------------------------- 3 Main Data Variables
 
-	private int id; //type of fing
-	private double length;
-	private double width;
+	private String id; //type of fing
+//	private double length;
+//	private double width;
 
 //-------------------------------------------------------------------------------- Meta Carpel Data
 
@@ -38,11 +38,11 @@ public class Finger{
 
 //-------------------------------------------------------------------------------- Initialization
 
-	public Finger(int eyed, double len, double wid, Vector m, Vector p, Vector i, Vector d){
+	public Finger(String eyed, Vector m, Vector p, Vector i, Vector d){
 
 		id = eyed; //type of fing
-		length = len;
-		width = wid;
+//		length = len;
+//		width = wid;
 
 		meta = m;
 		prox = p;
@@ -68,63 +68,63 @@ public class Finger{
 
 //-------------------------------------------------------------------------------- Return Vals
 
-	public int getID(){
+	public String getID(){
 		return id;
 	}
 
-	public double getLength(){
-		return length;
-	}
+//	public double getLength(){
+//		return length;
+//	}
+//
+//	public double getWidth(){
+//		return width;
+//	}
 
-	public double getWidth(){
-		return width;
-	}
-
-	public double getMetaStart(){
+	public double getMetaX(){
 		return meta.getX();
 	}
 	
-	public double getProxStart(){
+	public double getProxX(){
 		return prox.getX();
 	}
 	
-	public double getInterStart(){
+	public double getInterX(){
 		return inter.getX();
 	}
 	
-	public double getDistalStart(){
+	public double getDistalX(){
 		return distal.getX();
 	}
 	
-	public double getMetaEnd(){
+	public double getMetaY(){
 		return meta.getY();
 	}
 	
-	public double getProxEnd(){
+	public double getProxY(){
 		return prox.getY();
 	}
 	
-	public double getInterEnd(){
+	public double getInterY(){
 		return inter.getY();
 	}
 	
-	public double getDistalEnd(){
+	public double getDistalY(){
 		return distal.getY();
 	}
 	
-	public double getMetaDir(){
+	public double getMetaZ(){
 		return meta.getZ();
 	}
 	
-	public double getProxDir(){
+	public double getProxZ(){
 		return prox.getZ();
 	}
 	
-	public double getInterDir(){
+	public double getInterZ(){
 		return inter.getZ();
 	}
 	
-	public double getDistalDir(){
+	public double getDistalZ(){
 		return distal.getZ();
 	}
 }
