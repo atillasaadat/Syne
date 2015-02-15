@@ -2,3 +2,5 @@ Spique
 Signum (Used by other app names)
 Syne
 JustSyne
+Sine (because it looks better with the font I'm using)
+Sigil (def: an inscribed or painted symbol considered to have magical power) *DEEP*
