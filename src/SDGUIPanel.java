@@ -50,6 +50,8 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 			new ImageIcon("SpiqueDataGUIAssets/Image/Z.png").getImage()};
 
 	private Image bg = new ImageIcon("Image Construct/BG.png").getImage();
+	
+	private String testt = "";
 
 	private String[][] datatest={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
     		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
@@ -75,7 +77,7 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		int keycode=evt.getKeyCode();
 		switch(keycode){
 			case KeyEvent.VK_SPACE:
-				
+				textOut(testt);
 				//Call the save position code.
 			break;
 		}
@@ -160,6 +162,18 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		g2d.dispose();
 	}
 	
+	public void textOut(String t){
+		PrintWriter outfile = null;
+        try{
+			outfile=new PrintWriter(new BufferedWriter(new FileWriter("Test.txt")));
+		}
+		catch(IOException ex){
+			System.out.println("Something went wrong with saving Test.txt.");
+		}
+        outfile.println(t);
+        outfile.close();
+	}
+	
 	
 	public void drawData(Graphics g, String[][] test){ //Draws the data on the screen.
 		Graphics2D g2d=(Graphics2D)g.create();
@@ -170,20 +184,23 @@ public class SDGUIPanel extends JPanel implements KeyListener{
         //ArrayList[][] test=new ArrayList[5][12];
         int hand=0;
         int handpos=0;
+        testt="";
         
         /*String[][] test={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
         		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
         		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
         		{"rmx","rmy","rmz","rpx","rpy","rpz","rix","riy","riz","rdx","rdy","rdz"},
         		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};*/
-        
         for(int stx=174;stx<1024;stx=stx+174){
         	for(int sty=130;sty<520;sty=sty+100){
                 g2d.drawString("X = "+test[hand][handpos],stx,sty);
+                testt+=(""+test[hand][handpos]+"\r\n");
                 handpos+=1;
                 g2d.drawString("Y = "+test[hand][handpos],stx,sty+30);
+                testt+=(""+test[hand][handpos]+"\r\n");
                 handpos+=1;
                 g2d.drawString("Z = "+test[hand][handpos],stx,sty+60);
+                testt+=(""+test[hand][handpos]+"\r\n");
                 handpos+=1;
         	}
         	handpos=0;
