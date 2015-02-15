@@ -5,7 +5,16 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
+
+import com.leapmotion.leap.*;
+
+import java.io.IOException;
+import java.lang.Math;
+import java.util.ArrayList;
+
+import com.leapmotion.leap.*;
+import com.leapmotion.leap.Frame;
+import com.leapmotion.leap.Gesture.State;
 
 public class SpiqueDataGUI extends JFrame implements ActionListener{
 //LOAD/INITIALIZE.=======================================================================
@@ -17,6 +26,7 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 	public SpiqueDataGUI(){
 		super("Spique Interactive");
 		gui=new SDGUIPanel();
+		
 		gui.setPreferredSize(new Dimension(1024,576));
 		gui.setLocation(0,0);
 		//setIconImage(icon); //Sets the JFrame icon.
@@ -40,5 +50,25 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 	
 	public static void main(String[]args){
 		SpiqueDataGUI frame=new SpiqueDataGUI();
+		
+		
+		
+        // Create a sample listener and controller
+        SampleListener listener = new SampleListener();
+        Controller controller = new Controller();
+
+        // Have the sample listener receive events from the controller
+        controller.addListener(listener);
+
+        // Keep this process running until Enter is pressed
+        System.out.println("Press Enter to quit...");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Remove the sample listener when done
+        controller.removeListener(listener);
 	}
 }

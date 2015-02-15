@@ -241,7 +241,7 @@ class SampleListener extends Listener {
     }
 }
 
-public class SpeakApp {
+/*public class SpeakApp {
     public static  void main(String[] args) {
         // Create a sample listener and controller
         SampleListener listener = new SampleListener();
@@ -261,4 +261,4 @@ public class SpeakApp {
         // Remove the sample listener when done
         controller.removeListener(listener);
     }
-}
+}*/
