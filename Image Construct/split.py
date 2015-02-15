@@ -1,6 +1,6 @@
 from pygame import *
 init()
-BASE = "Testz"
+BASE = "test"
 pic = image.load(BASE+".png").convert(32,SRCALPHA)
 
 wid,hi = pic.get_size()
