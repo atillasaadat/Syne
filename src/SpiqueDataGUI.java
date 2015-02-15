@@ -17,12 +17,20 @@ import com.leapmotion.leap.Frame;
 import com.leapmotion.leap.Gesture.State;
 
 public class SpiqueDataGUI extends JFrame implements ActionListener{
+	
 //LOAD/INITIALIZE.=======================================================================
  	SDGUIPanel gui;
+ 	SampleListener listener;
+ 	Controller controller;
+ 	
 	javax.swing.Timer frameupdater=new javax.swing.Timer(1000/80,this);
 	
 	javax.swing.Timer testaction=new javax.swing.Timer(500,this);
-	private String[][] freshData;
+	private String[][] freshData= {{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
+    		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
+    		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
+    		{"rmx","rmy","rmz","rpx","rpy","rpz","rix","riy","riz","rdx","rdy","rdz"},
+    		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};
 	public SpiqueDataGUI(){
 		super("Spique Interactive");
 		gui=new SDGUIPanel();
@@ -34,29 +42,10 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 		pack(); //Resizes window so that all panels are at their preferred size.
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		
 		frameupdater.start();
 		
 		testaction.start();
-	}
-	
-	public String[][] getTheData(){
-		return freshData;
-	}
-	
-//ACTION PERFORMED.======================================================================
-	public void actionPerformed(ActionEvent evt){
-		freshData = listener.getList();
-		gui.repaint(); //Repaint here as updating is disabled on pause.
-		
-		Object source=evt.getSource();
-		if(source==testaction){
-			gui.changeLetter();
-		}
-	}
-	
-	public static void main(String[]args){
-		SpiqueDataGUI frame=new SpiqueDataGUI();
-		
 		
 		
         // Create a sample listener and controller
@@ -67,7 +56,13 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 
         // Have the sample listener receive events from the controller
         controller.addListener(listener);
-
+        
+        try{
+        	freshData = listener.getList();
+        }
+        catch(NullPointerException e){
+        	System.out.println("suk");
+        }
         // Keep this process running until Enter is pressed
         System.out.println("Press Enter to quit...");
         try {
@@ -78,5 +73,31 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 
         // Remove the sample listener when done
         controller.removeListener(listener);
+	}
+	
+	public String[][] getTheData(){
+		return freshData;
+	}
+	
+//ACTION PERFORMED.======================================================================
+	public void actionPerformed(ActionEvent evt){
+        try{
+        	freshData = listener.getList();
+        }
+        catch(NullPointerException e){
+        	System.out.println("suk2");
+        }
+		gui.setTheList(freshData);
+		gui.repaint(); //Repaint here as updating is disabled on pause.
+		
+		Object source=evt.getSource();
+		if(source==testaction){
+			gui.changeLetter();
+		}
+	}
+	
+	public static void main(String[]args){
+		SpiqueDataGUI frame=new SpiqueDataGUI();
+
 	}
 }

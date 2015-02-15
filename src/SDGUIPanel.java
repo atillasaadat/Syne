@@ -48,23 +48,14 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 			new ImageIcon("SpiqueDataGUIAssets/Image/X.png").getImage(),	
 			new ImageIcon("SpiqueDataGUIAssets/Image/Y.png").getImage(),
 			new ImageIcon("SpiqueDataGUIAssets/Image/Z.png").getImage()};
-<<<<<<< HEAD:src/SDGUIPanel.java
-<<<<<<< HEAD:SDGUIPanel.java
 
 	private Image bg = new ImageIcon("Image Construct/BG.png").getImage();
 
-=======
-	
->>>>>>> parent of 0f86ffe... Implemented BG:SDGUIPanel.java
 	private String[][] datatest={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
-=======
-	
-	private String[][] datatest=/*{{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
->>>>>>> origin/master:src/SDGUIPanel.java
     		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
     		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
     		{"rmx","rmy","rmz","rpx","rpy","rpz","rix","riy","riz","rdx","rdy","rdz"},
-    		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};*/
+    		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};
 	private String[] alphabet={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 //=======================================================================================
 	public SDGUIPanel(){
@@ -117,6 +108,8 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 	}
 	//DRAW METHODS.======================================================================
 	public void drawLetter(Graphics g,String select){
+		
+		
 		Graphics2D g2d=(Graphics2D)g.create();
 		g2d.setFont(guifont);
 		g2d.setColor(new Color(56,200,53));
@@ -167,6 +160,15 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		g2d.dispose();
 	}
 	
+	public void printshit(String[][] test){
+		for(int i=0;i<5;i++){
+			System.out.println("SPACE");
+			for(int j=0;j<12;j++){
+				System.out.println(test[i][j]);
+			}
+		}
+	}
+	
 	public void drawData(Graphics g, String[][] test){ //Draws the data on the screen.
 		Graphics2D g2d=(Graphics2D)g.create();
 		g2d.setFont(guifontcalibri);
@@ -198,18 +200,24 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		g2d.dispose();
 	}
 //=======================================================================================
+	public void setTheList(String[][] test){
+		datatest=test;
+	}
+	
+	
 	public String getLetter(){
 		return selectedletter;
 	}
 	
 //Paint Component.=======================================================================
 	public void paintComponent(Graphics g){
-		//g.setColor(Color.white);
-	 	g.setColor(new Color(42,132,153));
+		g.setColor(Color.white);
+	 	//g.setColor(new Color(42,132,153));
 	 	g.fillRect(0,0,1024,576);
-	 	drawLetter(g,selectedletter);
-	 	//drawTitle(g);
-	 	drawData(g,SpiqueDataGUI.getTheData());
+	 	//drawLetter(g,selectedletter);
+	 	drawTitle(g);
+	 	drawData(g,datatest);
+	 	//printshit(g,datatest);
 	}
 
 	@Override
