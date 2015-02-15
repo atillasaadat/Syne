@@ -21,7 +21,7 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 
 	private int prevnumber=-1;
 	
-	private Image[] signlist={new ImageIcon("SpiqueDataGUIAssets/Image/A.png").getImage(),
+	private Image[] signlist={
 			new ImageIcon("SpiqueDataGUIAssets/Image/A.png").getImage(),
 			new ImageIcon("SpiqueDataGUIAssets/Image/B.png").getImage(),
 			new ImageIcon("SpiqueDataGUIAssets/Image/C.png").getImage(),
