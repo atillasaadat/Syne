@@ -12,7 +12,7 @@ import javax.sound.sampled.AudioSystem;
 
 import java.applet.*;
 
-public class SDGUIPanel extends JPanel{
+public class SDGUIPanel extends JPanel implements KeyListener{
 //LOAD/INITIALIZE.=======================================================================
 	private Font guifont;
 	private Font guifontcalibri;
@@ -60,12 +60,23 @@ public class SDGUIPanel extends JPanel{
 		super();
 		setFocusable(true);
 		grabFocus();
+		addKeyListener(this);
 		loadFont("GlennsHand.ttf");
 		guifontcalibri=new Font("calibri",Font.PLAIN,24);
 		Random die=new Random();
 		selectednumber=die.nextInt(26);
 		selectedletter=alphabet[selectednumber];
 		//System.out.println(selectedletter);
+	}
+	
+	public void keyReleased(KeyEvent evt){
+		int keycode=evt.getKeyCode();
+		switch(keycode){
+			case KeyEvent.VK_SPACE:
+				System.out.println("Hi");
+				//Call the save position code.
+			break;
+		}
 	}
 	//GETDATA METHODS.=================================================================	
 	//public void getData()
@@ -188,5 +199,17 @@ public class SDGUIPanel extends JPanel{
 	 	drawLetter(g,selectedletter);
 	 	//drawTitle(g);
 	 	//drawData(g,datatest);
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
