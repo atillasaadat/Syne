@@ -24,7 +24,7 @@ public class LetterCheck {
 		index_metacarpal = new Vector(0.224711f, -0.350514f, 0.9092f);
 		index_proximal = new Vector(0.167005f, 0.803414f, 0.57152f);
 		index_intermediate = new Vector(-0.218985f, 0.699985f, -0.679755f); 
-		index_distal = new Vector(-0.2951f, 0.109864f, -0.949129f);
+		index_distal = new Vector(-0.3f, 0f, -0.9f);
 		indexArray = new Vector [] {index_metacarpal,index_proximal,index_intermediate,index_distal};
 		
 		middle_metacarpal = new Vector(0.0899691f, -0.344703f, 0.93439f);
@@ -89,6 +89,9 @@ public class LetterCheck {
 		}
 		if(inputFinger == Finger.Type.TYPE_INDEX){
 			System.out.println(distal+"      "+indexArray[3]);
+			if(distal.equals(indexArray[3])){
+				System.out.println("worth");
+			}
 			if(metacarpal.equals(indexArray[0])&&
 					proximal.equals(indexArray[1])&&intermediate.equals(indexArray[2])&&distal.equals(indexArray[3])){
 				System.out.println("index true");

@@ -78,6 +78,9 @@ class SampleListener extends Listener {
             // Get fingers
             int counter = 0;
             boolean [] ifAllTrue = new boolean[5];
+            String[][] allDataList = new String [5][12];
+            int counterFing = 0;
+            int counterBone = 0;
             ArrayList<Vector> fingerVector = new ArrayList<Vector>();
             for (Finger finger : hand.fingers()) {
             	
@@ -96,7 +99,13 @@ class SampleListener extends Listener {
                                      + ", direction: " + bone.direction());
                     */
                     fingerVector.add(bone.direction());
+                    allDataList[counterFing][counterBone] = Float.toString(bone.direction().getX());
+                    allDataList[counterFing][counterBone+1] = Float.toString(bone.direction().getY());
+                    allDataList[counterFing][counterBone+2] = Float.toString(bone.direction().getZ());
+                    counterBone+=3;
                 }
+                counterFing++;
+                counterBone=0;
                 if(finger.id()%10==0){
                 	if(thumb.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
                 		System.out.println("thumb true");
@@ -107,7 +116,7 @@ class SampleListener extends Listener {
                 }else if(finger.id()%10==1){
                 	
                 	if(index.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
-                		System.out.println("index false");
+                		System.out.println("index true");
                 		ifAllTrue[1] = true;
                 	}else{
                 		//System.out.println("index false");
