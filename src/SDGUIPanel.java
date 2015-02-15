@@ -48,14 +48,19 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 			new ImageIcon("SpiqueDataGUIAssets/Image/X.png").getImage(),
 			new ImageIcon("SpiqueDataGUIAssets/Image/Y.png").getImage(),
 			new ImageIcon("SpiqueDataGUIAssets/Image/Z.png").getImage()};
+<<<<<<< HEAD:SDGUIPanel.java
 
 	private Image bg = new ImageIcon("Image Construct/BG.png").getImage();
 
 	private String[][] datatest={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
+=======
+	
+	private String[][] datatest=/*{{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
+>>>>>>> origin/master:src/SDGUIPanel.java
     		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
     		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
     		{"rmx","rmy","rmz","rpx","rpy","rpz","rix","riy","riz","rdx","rdy","rdz"},
-    		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};
+    		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};*/
 	private String[] alphabet={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 //=======================================================================================
 	public SDGUIPanel(){
@@ -75,7 +80,7 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		int keycode=evt.getKeyCode();
 		switch(keycode){
 			case KeyEvent.VK_SPACE:
-				System.out.println("Hi");
+				
 				//Call the save position code.
 			break;
 		}
@@ -202,7 +207,7 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 	 	g.fillRect(0,0,1024,576);
 	 	drawLetter(g,selectedletter);
 	 	//drawTitle(g);
-	 	//drawData(g,datatest);
+	 	drawData(g,SpiqueDataGUI.getTheData());
 	}
 
 	@Override
