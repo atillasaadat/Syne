@@ -61,7 +61,6 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
         	freshData = listener.getList();
         }
         catch(NullPointerException e){
-        	System.out.println("suk");
         }
         // Keep this process running until Enter is pressed
         System.out.println("Press Enter to quit...");
@@ -85,7 +84,6 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
         	freshData = listener.getList();
         }
         catch(NullPointerException e){
-        	System.out.println("suk2");
         }
 		gui.setTheList(freshData);
 		gui.repaint(); //Repaint here as updating is disabled on pause.

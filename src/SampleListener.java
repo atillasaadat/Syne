@@ -109,11 +109,11 @@ public class SampleListener extends Listener {
                     */
                     fingerVector.add(bone.direction());
                     allDataList[counterFing][counterBone] = Float.toString(bone.direction().getX());
-                    System.out.println(Float.toString(bone.direction().getX()));
+                 
                     counterBone+=1;
 
                     allDataList[counterFing][counterBone] = Float.toString(bone.direction().getY());
-                    System.out.println(allDataList[counterFing][counterBone]);
+     
                     counterBone+=1;
                     allDataList[counterFing][counterBone] = Float.toString(bone.direction().getZ());
                     counterBone+=1;

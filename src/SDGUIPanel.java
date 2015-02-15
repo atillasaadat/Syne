@@ -64,7 +64,7 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		grabFocus();
 		addKeyListener(this);
 		loadFont("GlennsHand.ttf");
-		guifontcalibri=new Font("calibri",Font.PLAIN,24);
+		guifontcalibri=new Font("calibri",Font.PLAIN,18);
 		Random die=new Random();
 		selectednumber=die.nextInt(26);
 		selectedletter=alphabet[selectednumber];
@@ -160,14 +160,6 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 		g2d.dispose();
 	}
 	
-	public void printshit(String[][] test){
-		for(int i=0;i<5;i++){
-			System.out.println("SPACE");
-			for(int j=0;j<12;j++){
-				System.out.println(test[i][j]);
-			}
-		}
-	}
 	
 	public void drawData(Graphics g, String[][] test){ //Draws the data on the screen.
 		Graphics2D g2d=(Graphics2D)g.create();
@@ -217,7 +209,6 @@ public class SDGUIPanel extends JPanel implements KeyListener{
 	 	//drawLetter(g,selectedletter);
 	 	drawTitle(g);
 	 	drawData(g,datatest);
-	 	//printshit(g,datatest);
 	}
 
 	@Override
