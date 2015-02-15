@@ -1,3 +1,4 @@
+//Sam Wang
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
@@ -10,22 +11,27 @@ import java.applet.*;
 public class SDGUIPanel extends JPanel{
 //LOAD/INITIALIZE.=======================================================================
 	private Font guifont;
+	private Font guifontcalibri;
+	private String[][] datatest={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
+    		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
+    		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
+    		{"rmx","rmy","rmz","rpx","rpy","rpz","rix","riy","riz","rdx","rdy","rdz"},
+    		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};
 
 //=======================================================================================
 	public SDGUIPanel(){
 		super();
 		setFocusable(true);
 		grabFocus();
-		guifont=new Font("arial",Font.PLAIN,24);
-		//loadFont("GlennsHand.ttf");
-		
+		loadFont("GlennsHand.ttf");
+		guifontcalibri=new Font("calibri",Font.PLAIN,24);
 	}
 	//GETDATA METHODS.=================================================================	
-	public void getData()
+	//public void getData()
 	
 	
 	//METHODS.=========================================================================		
-/*	public void loadFont(String fontname){ //Loads a custom font to use for the gui.
+	public void loadFont(String fontname){ //Loads a custom font to use for the gui.
 		String fontpath="SpiqueDataGUIAssets/Font/"+fontname;
 		try{
 	    	InputStream is=SpiqueDataGUI.class.getResourceAsStream(fontpath);
@@ -36,21 +42,21 @@ public class SDGUIPanel extends JPanel{
 	    	System.err.println("Font was not found in "+fontpath+". Using basic arial font.");
 	    	guifont=new Font("arial",Font.PLAIN,24);
 	    }
-	}*/
+	}
 	//DRAW METHODS.======================================================================
 	public void drawTitle(Graphics g){
 		Graphics2D g2d=(Graphics2D)g.create();
 		g2d.setFont(guifont);
-        g2d.setColor(new Color(255,255,255)); //White colour for data.
-        g2d.drawString("Thumb",174,50); //Draws and centers the data.     
-        g2d.drawString("Index",348,50); //Draws and centers the data.
-        g2d.drawString("Middle",522,50); //Draws and centers the data.
-        g2d.drawString("Ring",696,50); //Draws and centers the data.
-        g2d.drawString("Pinky",870,50); //Draws and centers the data.
-        g2d.drawString("Meta.",20,150); //Draws and centers the data.
-        g2d.drawString("Prox.",20,250); //Draws and centers the data.
-        g2d.drawString("Inter.",20,350); //Draws and centers the data.
-        g2d.drawString("Dist.",20,450); //Draws and centers the data.
+        g2d.setColor(new Color(0,176,34));
+        g2d.drawString("Thumb",174,50);
+        g2d.drawString("Index",348,50);
+        g2d.drawString("Middle",522,50);
+        g2d.drawString("Ring",696,50);
+        g2d.drawString("Pinky",870,50);
+        g2d.drawString("Meta.",20,150);
+        g2d.drawString("Prox.",20,250);
+        g2d.drawString("Inter.",20,350);
+        g2d.drawString("Dist.",20,450);
         //---------------
         for(int i=144;i<900;i=i+174){
         	g2d.drawLine(i,0,i,576);
@@ -61,13 +67,41 @@ public class SDGUIPanel extends JPanel{
 		g2d.dispose();
 	}
 	
-	public void drawData(Graphics g){ //Draws the data on the screen.
+	public void drawData(Graphics g, String[][] test){ //Draws the data on the screen.
 		Graphics2D g2d=(Graphics2D)g.create();
+		g2d.setFont(guifontcalibri);
+        g2d.setColor(new Color(0,0,0));
+        
+        
+        //ArrayList[][] test=new ArrayList[5][12];
+        int hand=0;
+        int handpos=0;
+        
+        /*String[][] test={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
+        		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
+        		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
+        		{"rmx","rmy","rmz","rpx","rpy","rpz","rix","riy","riz","rdx","rdy","rdz"},
+        		{"pmx","pmy","pmz","ppx","ppy","ppz","pix","piy","piz","pdx","pdy","pdz"}};*/
+        
+        for(int stx=174;stx<1024;stx=stx+174){
+        	for(int sty=130;sty<520;sty=sty+100){
+                g2d.drawString("X = "+test[hand][handpos],stx,sty);
+                handpos+=1;
+                g2d.drawString("Y = "+test[hand][handpos],stx,sty+30);
+                handpos+=1;
+                g2d.drawString("Z = "+test[hand][handpos],stx,sty+60);
+                handpos+=1;
+        	}
+        	handpos=0;
+        	hand+=1;
+        }
+		g2d.dispose();
 	}
 //Paint Component.=======================================================================
 	public void paintComponent(Graphics g){
-	 	g.setColor(Color.orange);
+	 	g.setColor(Color.white);
 	 	g.fillRect(0,0,1024,768);
 	 	drawTitle(g);
+	 	drawData(g,datatest);
 	}
 }
