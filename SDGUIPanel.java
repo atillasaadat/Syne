@@ -12,6 +12,7 @@ public class SDGUIPanel extends JPanel{
 //LOAD/INITIALIZE.=======================================================================
 	private Font guifont;
 	private Font guifontcalibri;
+	private char selected;
 	private String[][] datatest={{"tmx","tmy","tmz","tpx","tpy","tpz","tix","tiy","tiz","tdx","tdy","tdz"},
     		{"imx","imy","imz","ipx","ipy","ipz","iix","iiy","iiz","idx","idy","idz"},
     		{"mmx","mmy","mmz","mpx","mpy","mpz","mix","miy","miz","mdx","mdy","mdz"},
@@ -25,6 +26,9 @@ public class SDGUIPanel extends JPanel{
 		grabFocus();
 		loadFont("GlennsHand.ttf");
 		guifontcalibri=new Font("calibri",Font.PLAIN,24);
+		
+		Random die=new Random();
+		selectedletter=(char)(die.nextInt(26) + "A");
 	}
 	//GETDATA METHODS.=================================================================	
 	//public void getData()
@@ -36,7 +40,7 @@ public class SDGUIPanel extends JPanel{
 		try{
 	    	InputStream is=SpiqueDataGUI.class.getResourceAsStream(fontpath);
 	    	guifont=Font.createFont(Font.TRUETYPE_FONT,is);
-	    	guifont=guifont.deriveFont(24f); //Changes loaded font size.
+	    	guifont=guifont.deriveFont(144f); //Changes loaded font size.
 	    }
 	    catch (Exception ex){ //Loads a common system font if the custom font cannot be loaded.
 	    	System.err.println("Font was not found in "+fontpath+". Using basic arial font.");
@@ -44,6 +48,15 @@ public class SDGUIPanel extends JPanel{
 	    }
 	}
 	//DRAW METHODS.======================================================================
+	public void drawLetter(Graphics g,char selectedletter){
+		Graphics2D g2d=(Graphics2D)g.create();
+		g2d.setFont(guifont);
+		g2d.setColor(255,255,255);
+		String drawme=selectedletter;
+        g2d.drawString(drawme,174,50);
+        g2d.dispose();
+	}
+	
 	public void drawTitle(Graphics g){
 		Graphics2D g2d=(Graphics2D)g.create();
 		g2d.setFont(guifont);
@@ -101,7 +114,8 @@ public class SDGUIPanel extends JPanel{
 	public void paintComponent(Graphics g){
 	 	g.setColor(Color.white);
 	 	g.fillRect(0,0,1024,768);
-	 	drawTitle(g);
-	 	drawData(g,datatest);
+	 	drawLetter(g,selectedletter);
+	 	//drawTitle(g);
+	 	//drawData(g,datatest);
 	}
 }
