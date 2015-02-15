@@ -182,11 +182,11 @@ public class SDGUIPanel extends JPanel{
 	
 //Paint Component.=======================================================================
 	public void paintComponent(Graphics g){
-		g.setColor(Color.white);
-	 	//g.setColor(new Color(42,132,153));
+		//g.setColor(Color.white);
+	 	g.setColor(new Color(42,132,153));
 	 	g.fillRect(0,0,1024,576);
-	 	//drawLetter(g,selectedletter);
-	 	drawTitle(g);
-	 	drawData(g,datatest);
+	 	drawLetter(g,selectedletter);
+	 	//drawTitle(g);
+	 	//drawData(g,datatest);
 	}
 }
