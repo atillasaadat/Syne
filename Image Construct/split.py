@@ -1,6 +1,6 @@
 from pygame import *
 init()
-BASE = "linkwalk"
+BASE = "Testz"
 pic = image.load(BASE+".png").convert(32,SRCALPHA)
 
 wid,hi = pic.get_size()
