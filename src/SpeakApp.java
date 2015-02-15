@@ -76,35 +76,82 @@ class SampleListener extends Listener {
             */
 
             // Get fingers
+            int counter = 0;
+            boolean [] ifAllTrue = new boolean[5];
+            ArrayList<Vector> fingerVector = new ArrayList<Vector>();
             for (Finger finger : hand.fingers()) {
-            	ArrayList<Vector> fingerVector = new ArrayList<Vector>();
+            	
                 /*System.out.println("    " + finger.type() + ", id: " + finger.id()
                                  + ", length: " + finger.length()
                                  + "mm, width: " + finger.width() + "mm");
-                */
+                 */
+                
 
-                //Get Bones
+                //Get Bone\s
                 for(Bone.Type boneType : Bone.Type.values()) {
                     Bone bone = finger.bone(boneType);
-                    /*System.out.println("      " + bone.type()
+                   /* System.out.println("      " + bone.type()
                                      + " bone, start: " + bone.prevJoint()
                                      + ", end: " + bone.nextJoint()
                                      + ", direction: " + bone.direction());
                     */
                     fingerVector.add(bone.direction());
                 }
-                if(
-                	thumb.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))&&
-                	index.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))&&
-                	middle.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))&&
-                	ring.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))&&
-                	pinky.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))
-                	
-                	){
-                		System.out.println("THIS SHIT WORJKDHSKF JHEUFHESK");
+                if(finger.id()%10==0){
+                	if(thumb.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
+                		System.out.println("thumb true");
+                		ifAllTrue[0] = true;
+                	}else{
+                		//System.out.println("thumb false");
                 	}
+                }else if(finger.id()%10==1){
+                	
+                	if(index.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
+                		System.out.println("index false");
+                		ifAllTrue[1] = true;
+                	}else{
+                		//System.out.println("index false");
+                	}
+                }else if(finger.id()%10==2){
+                	if(middle.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
+                		System.out.println("middle true");
+                		ifAllTrue[2] = true;
+                	}else{
+                		//System.out.println("middle false");
+                	}
+                }else if(finger.id()%10==3){
+                	if(ring.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
+                		System.out.println("ring true");
+                		ifAllTrue[3] = true;
+                	}else{
+                		//System.out.println("ring false");
+                	}
+                }else if(finger.id()%10==4){
+                	if(pinky.checkIfA(finger.type(),fingerVector.get(0),fingerVector.get(1),fingerVector.get(2),fingerVector.get(3))){
+                		System.out.println("pinky true");
+                		ifAllTrue[4] = true;
+                	}else{
+                		//System.out.println("ring false");
+                	}
+                }
                 fingerVector = new ArrayList<Vector>();
+                //System.out.println(counter);
+                //counter++;
             }
+            
+           
+            for (int i=0; i < ifAllTrue.length; i++) {
+            	if (ifAllTrue[i]) {
+            		System.out.println(ifAllTrue[i]);
+            		counter++;
+            	}
+            }
+            if(counter==5){
+           		System.out.println("dsgdsgdfgfdgfdgd");
+           	}
+            counter = 0;
+            ifAllTrue= new boolean[5];
+            fingerVector = new ArrayList<Vector>();
         }
 
         // Get tools
@@ -185,8 +232,8 @@ class SampleListener extends Listener {
     }
 }
 
-class SpeakApp {
-    public static void main(String[] args) {
+public class SpeakApp {
+    public static  void main(String[] args) {
         // Create a sample listener and controller
         SampleListener listener = new SampleListener();
         Controller controller = new Controller();
