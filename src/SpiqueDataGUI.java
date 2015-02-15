@@ -22,7 +22,7 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 	javax.swing.Timer frameupdater=new javax.swing.Timer(1000/80,this);
 	
 	javax.swing.Timer testaction=new javax.swing.Timer(500,this);
-	
+	private String[][] freshData;
 	public SpiqueDataGUI(){
 		super("Spique Interactive");
 		gui=new SDGUIPanel();
@@ -38,8 +38,14 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
 		
 		testaction.start();
 	}
+	
+	public String[][] getTheData(){
+		return freshData;
+	}
+	
 //ACTION PERFORMED.======================================================================
 	public void actionPerformed(ActionEvent evt){
+		freshData = listener.getList();
 		gui.repaint(); //Repaint here as updating is disabled on pause.
 		
 		Object source=evt.getSource();
@@ -56,6 +62,8 @@ public class SpiqueDataGUI extends JFrame implements ActionListener{
         // Create a sample listener and controller
         SampleListener listener = new SampleListener();
         Controller controller = new Controller();
+        
+        
 
         // Have the sample listener receive events from the controller
         controller.addListener(listener);
