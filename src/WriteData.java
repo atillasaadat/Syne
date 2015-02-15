@@ -17,7 +17,8 @@ public class WriteData
     public String csv;
     public String[]record;
     public ArrayList<ArrayList<Vector>>myFingers = new ArrayList<ArrayList<Vector>>();
-    public void WriteData(ArrayList<Vector> thumb,
+    public void WriteData(String filename,
+                          ArrayList<Vector> thumb,
                           ArrayList<Vector> index,
                           ArrayList<Vector> middle,
                           ArrayList<Vector> ring,
@@ -29,7 +30,7 @@ public class WriteData
         myFingers.add(middle);
         myFingers.add(ring);
         myFingers.add(pinky);
-        this.csv = "Data/data.csv";
+        this.csv = "Data/"+filename+".csv";
 
         CSVWriter writer = new CSVWriter(new FileWriter(csv));
         this.record = "Fingers,Bones,X,Y,Z".split(",");
@@ -84,7 +85,7 @@ public class WriteData
 
 
         WriteData mywritedata = new WriteData();
-        mywritedata.WriteData(Thumb,Index,Middle,Ring,Pinky);
+        mywritedata.WriteData("LetterA",Thumb,Index,Middle,Ring,Pinky);
 
 
     }
